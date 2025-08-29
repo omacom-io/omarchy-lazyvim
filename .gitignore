@@ -1,0 +1,14 @@
+# Arch package build files
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+*.tar.gz
+*.tar.xz
+
+# Build directories
+src/
+pkg/
+
+# Makepkg files
+*.log
+*.sig
