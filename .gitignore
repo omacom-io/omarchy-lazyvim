@@ -8,6 +8,7 @@
 # Build directories
 src/
 pkg/
+starter/
 
 # Makepkg files
 *.log
