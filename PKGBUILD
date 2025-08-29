@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Pre-built LazyVim configuration with cached plugins"
 arch=('any')
 url="https://github.com/LazyVim/LazyVim"
-license=('Apache')
+license=('MIT')
 depends=('neovim>=0.9.0' 'git')
 makedepends=('git' 'nodejs' 'npm')
 source=("git+https://github.com/LazyVim/starter.git")
@@ -58,7 +58,7 @@ package() {
   # Fix permissions to be readable by all users
   chmod -R 755 "$pkgdir/usr/share/$pkgname"
   find "$pkgdir/usr/share/$pkgname" -type f -exec chmod 644 {} \;
-  
+
   # Install setup script to /usr/bin
   install -Dm755 "$startdir/omarchy-lazyvim-setup" "$pkgdir/usr/bin/omarchy-lazyvim-setup"
 }
