@@ -35,13 +35,13 @@ build() {
   # Add custom option to disable relative numbers
   echo "vim.opt.relativenumber = false" >>"$XDG_CONFIG_HOME/nvim/lua/config/options.lua"
 
-  # Prime LazyVim - download all plugins and build caches
-  echo ":: Downloading and installing LazyVim plugins..."
-  nvim --headless "+Lazy! sync" +qa || true
-
-  # Install TreeSitter parsers
-  echo ":: Installing TreeSitter parsers..."
-  nvim --headless "+TSUpdateSync" +qa || true
+  # Prime LazyVim - download all plugins and TreeSitter parsers in one session
+  # Run for minimum 60 seconds to ensure everything completes
+  echo ":: Installing LazyVim plugins and TreeSitter parsers (minimum 60 seconds)..."
+  nvim --headless \
+    "+Lazy! sync" \
+    "+TSUpdateSync" \
+    "+lua vim.defer_fn(function() vim.cmd('qa!') end, 60000)" || true
 }
 
 package() {
