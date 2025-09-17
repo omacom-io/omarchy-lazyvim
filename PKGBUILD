@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/LazyVim/LazyVim"
 license=('MIT')
 depends=('neovim>=0.9.0' 'git')
-makedepends=('git' 'nodejs' 'npm')
+makedepends=('git' 'nodejs' 'npm' 'tree-sitter-cli')
 source=("git+https://github.com/LazyVim/starter.git")
 sha256sums=('SKIP')
 
@@ -40,8 +40,7 @@ build() {
   echo ":: Installing LazyVim plugins and TreeSitter parsers (minimum 60 seconds)..."
   nvim --headless \
     "+Lazy! sync" \
-    "+TSUpdate" \
-    "+lua vim.defer_fn(function() vim.cmd('qa!') end, 60000)" || true
+    "+qa!" || true
 }
 
 package() {
