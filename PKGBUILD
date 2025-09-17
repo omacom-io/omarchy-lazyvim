@@ -40,7 +40,7 @@ build() {
   echo ":: Installing LazyVim plugins and TreeSitter parsers (minimum 60 seconds)..."
   nvim --headless \
     "+Lazy! sync" \
-    "+TSUpdateSync" \
+    "+TSUpdate" \
     "+lua vim.defer_fn(function() vim.cmd('qa!') end, 60000)" || true
 }
 
